@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jellyfin Music Metadata
-// @match       http://192.168.11.18:8096/web/index.html
+// @match       http://JELLYFIN SERVER IP/web/index.html
 // @version     1.0
 // @author      Phaze#6193
 // ==/UserScript==
@@ -9,6 +9,7 @@ class MusicMetaClient{
     constructor( opts = { debug: false } ){
         this.opts = opts;
         this.ws = null;
+        this.open = false;
         this.media = {
             type: 'ClientUpdate',
             songTitle: null,
@@ -27,14 +28,19 @@ class MusicMetaClient{
         this.ws.onclose = () => {
             if(this.opts.debug)
                 console.log('Cannot connect to any server, is it running? Trying again in 5 seconds.');
-
+                
+            this.open = false;
             setTimeout(() => this.attemptConnection(), 5000);
         }
 
-        this.ws.onopen = () => 
+        this.ws.onopen = () => {
+            this.open = true;
             this.onSongDataChange();
+        }
     }
     onSongDataChange(){
+        if(this.open === false)return;
+
         if(this.opts.debug)
             console.log('Updating metadata server', this.media);
 
