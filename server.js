@@ -146,7 +146,8 @@ class MusicMetaServer extends events.EventEmitter{
                                 songAlbum: a.media.songAlbum,
                                 duration: a.media.duration,
                                 elapsed: a.media.elapsed,
-                                playing: a.media.playing
+                                playing: a.media.playing,
+                                source: a.media.source
                             })));
     
                             return;
@@ -179,6 +180,7 @@ class MusicMetaServer extends events.EventEmitter{
                         activity.media.duration = msg.duration;
                         activity.media.elapsed = msg.elapsed;
                         activity.media.playing = msg.playing;
+                        activity.media.source = msg.source;
                         this.emit('ActivityUpdated', activity);
 
                         this.secondarys.forEach(s =>

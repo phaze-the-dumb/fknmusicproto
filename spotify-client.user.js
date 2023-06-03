@@ -17,7 +17,8 @@ class MusicMetaClient{
             songAlbum: null,
             duration: null,
             elapsed: null,
-            playing: false
+            playing: false,
+            source: null
         }
 
         this.attemptConnection();
