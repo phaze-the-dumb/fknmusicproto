@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Youtube Music Metadata
-// @match        *://*.youtube.com/watch
+// @match       https://www.youtube.com/watch
 // @version     1.0
 // @author      Phaze#6193
 // ==/UserScript==

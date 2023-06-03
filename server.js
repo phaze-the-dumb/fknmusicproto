@@ -84,6 +84,13 @@ class MusicMetaServer extends events.EventEmitter{
                         console.log('[MusicMetaServer] Client Updated Activity');
                 }
 
+                if(msg.type === 'ClientDisconnect'){
+                    if(this.opts.debug)
+                        console.log('[MusicMetaServer] Client disconnected');
+
+                    this.activity = this.activity.filter(x => x.id !== msg.id);
+                }
+
                 if(msg.type === 'ServerWelcome'){
                     // We've been accepted! We can continue running as normal from now.
 
@@ -201,6 +208,20 @@ class MusicMetaServer extends events.EventEmitter{
                         console.log('[MusicMetaServer] Secondary server disconnected');
 
                     this.secondarys = this.secondarys.filter(x => x.socket !== socket);
+                    return;
+                }
+
+                if(this.activity.find(x => x.socket === socket)){
+                    if(this.opts.debug)
+                        console.log('[MusicMetaServer] Client disconnected');
+
+                    let id = this.activity.find(x => x.socket === socket).id;
+                    this.activity = this.activity.filter(x => x.socket !== socket);
+
+                    this.secondarys.forEach(s =>
+                        s.socket.send(JSON.stringify({ type: 'ClientDisconnect', id: id })));
+
+                    return;
                 }
             });
         });
