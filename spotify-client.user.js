@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Youtube Music Metadata
+// @name        Spotify Music Metadata
 // @match       https://open.spotify.com/*
 // @version     1.0
 // @author      Phaze#6193
