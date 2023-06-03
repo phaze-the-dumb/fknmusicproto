@@ -89,8 +89,8 @@ setInterval(() => {
     if(
         !document.querySelector('div.eMzEmF > span:nth-child(1) > a:nth-child(1)') ||
         !document.querySelector('div.gpNta6i8q3KYJC6WBZQC:nth-child(1)') ||
-        !document.querySelector('ytd-video-owner-renderer.ytd-watch-metadata > div:nth-child(2) > ytd-channel-name:nth-child(1) > div:nth-child(1) > div:nth-child(1) > yt-formatted-string:nth-child(1) > a:nth-child(1)') ||
-        !document.querySelector('.ytp-play-button')
+        !document.querySelector('.playback-bar__progress-time-elapsed') ||
+        !document.querySelector('.vnCew8qzJq3cVGlYFXRI')
     )return;
 
     musicInfo.updateMeta({
