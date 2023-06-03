@@ -42,7 +42,7 @@ class MusicMetaClient{
         if(this.open === false)return;
 
         if(this.opts.debug)
-            console.log('Updating metadata server', this.media);
+            console.log('Updating metadata server');
 
         this.ws.send(JSON.stringify(this.media))
     }
@@ -83,7 +83,7 @@ let convertTime = ( str ) => {
     }
 }
 
-let musicInfo = new MusicMetaClient({ debug: true });
+let musicInfo = new MusicMetaClient();
 
 setInterval(() => {
     if(
