@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jellyfin Music Metadata
-// @match       http://192.168.11.18:8096/web/index.html
+// @match       JELLYFIN SERVER URL/web/index.html
 // @version     1.0
 // @author      Phaze#6193
 // ==/UserScript==
