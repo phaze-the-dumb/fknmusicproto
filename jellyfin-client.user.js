@@ -108,6 +108,7 @@ setInterval(() => {
                 convertTime(document.querySelector('.positionTime').innerText),
         playing: 
             document.querySelector('button.playPauseButton:nth-child(2) > span:nth-child(1)').className.includes('pause') &&
-            document.querySelector('button.playPauseButton:nth-child(2) > span:nth-child(1)').checkVisibility()
+            document.querySelector('button.playPauseButton:nth-child(2) > span:nth-child(1)').checkVisibility(),
+        source: 'Jellyfin'
     })
 }, 1000);

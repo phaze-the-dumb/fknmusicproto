@@ -100,6 +100,7 @@ setInterval(() => {
         songAlbum: null,
         duration: convertTime(document.querySelector('div.Type__TypeElement-sc-goli3j-0:nth-child(3)').innerText),
         elapsed: convertTime(document.querySelector('.playback-bar__progress-time-elapsed').innerText),
-        playing: document.querySelector('.vnCew8qzJq3cVGlYFXRI').getAttribute('label') === 'Pause'
+        playing: document.querySelector('.vnCew8qzJq3cVGlYFXRI').getAttribute('label') === 'Pause',
+        source: 'Spotify'
     })
 }, 1000);

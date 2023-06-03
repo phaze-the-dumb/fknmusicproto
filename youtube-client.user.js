@@ -100,6 +100,7 @@ setInterval(() => {
         songAlbum: null,
         duration: convertTime(document.querySelector('.ytp-time-duration').innerText),
         elapsed: convertTime(document.querySelector('.ytp-time-current').innerText),
-        playing: document.querySelector('.ytp-play-button').getAttribute('tooltip') === 'Pause'
+        playing: document.querySelector('.ytp-play-button').getAttribute('tooltip') === 'Pause',
+        source: 'Youtube'
     })
 }, 1000);
