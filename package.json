@@ -1,5 +1,23 @@
 {
   "dependencies": {
     "ws": "^8.13.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "fknmusicproto",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phaze-the-dumb/fknmusicproto.git"
+  },
+  "author": "Phaze#6193",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phaze-the-dumb/fknmusicproto/issues"
+  },
+  "homepage": "https://github.com/phaze-the-dumb/fknmusicproto#readme",
+  "description": ""
 }
