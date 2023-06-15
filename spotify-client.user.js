@@ -29,7 +29,7 @@ class MusicMetaClient{
         this.ws.onclose = () => {
             if(this.opts.debug)
                 console.log('Cannot connect to any server, is it running? Trying again in 5 seconds.');
-                
+
             this.open = false;
             setTimeout(() => this.attemptConnection(), 5000);
         }
@@ -72,7 +72,7 @@ let convertTime = ( str ) => {
         seconds += minutes * 60;
         return seconds;
     }
-    
+
     if(splitTime.length === 3){
         let seconds = parseInt(splitTime[2]);
         let minutes = parseInt(splitTime[1]);
@@ -88,16 +88,16 @@ let musicInfo = new MusicMetaClient();
 
 setInterval(() => {
     if(
-        !document.querySelector('div.eMzEmF > span:nth-child(1) > a:nth-child(1)') ||
-        !document.querySelector('div.gpNta6i8q3KYJC6WBZQC:nth-child(1)') ||
+        !document.querySelector('div.ieTwfQ > span:nth-child(1) > a:nth-child(1)') ||
+        !document.querySelector('.j96cpCtZAIdqxcDrYHPI > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) > a:nth-child(1)') ||
         !document.querySelector('.playback-bar__progress-time-elapsed') ||
         !document.querySelector('.vnCew8qzJq3cVGlYFXRI')
     )return;
 
     musicInfo.updateMeta({
         type: 'ClientUpdate',
-        songTitle: document.querySelector('div.eMzEmF > span:nth-child(1) > a:nth-child(1)').innerText,
-        songArtist: document.querySelector('div.gpNta6i8q3KYJC6WBZQC:nth-child(1)').innerText,
+        songTitle: document.querySelector('div.ieTwfQ > span:nth-child(1) > a:nth-child(1)').innerText,
+        songArtist: document.querySelector('.j96cpCtZAIdqxcDrYHPI > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) > a:nth-child(1)').innerText,
         songAlbum: null,
         duration: convertTime(document.querySelector('div.Type__TypeElement-sc-goli3j-0:nth-child(3)').innerText),
         elapsed: convertTime(document.querySelector('.playback-bar__progress-time-elapsed').innerText),
