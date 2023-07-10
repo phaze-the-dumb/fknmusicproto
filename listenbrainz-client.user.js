@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Spotify Music Metadata
+// @name        Listen Brainz Metadata
 // @match       https://listenbrainz.org/user/*
 // @version     1.0
 // @author      Phaze#6193
@@ -62,28 +62,6 @@ class MusicMetaClient{
     }
 }
 
-let convertTime = ( str ) => {
-    let splitTime = str.split(':');
-
-    if(splitTime.length === 2){
-        let seconds = parseInt(splitTime[1]);
-        let minutes = parseInt(splitTime[0]);
-
-        seconds += minutes * 60;
-        return seconds;
-    }
-
-    if(splitTime.length === 3){
-        let seconds = parseInt(splitTime[2]);
-        let minutes = parseInt(splitTime[1]);
-        let hours = parseInt(splitTime[0]);
-
-        minutes += hours * 60;
-        seconds += minutes * 60;
-        return seconds;
-    }
-}
-
 let musicInfo = new MusicMetaClient();
 
 setInterval(() => {
@@ -92,8 +70,8 @@ setInterval(() => {
         songTitle: document.querySelector('.playing-now > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)').innerText,
         songArtist: document.querySelector('.playing-now > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > a:nth-child(1)').innerText,
         songAlbum: null,
-        duration: 0,
-        elapsed: 0,
+        duration: -1,
+        elapsed: -1,
         playing: true,
         source: 'Listen Brainz'
     })
