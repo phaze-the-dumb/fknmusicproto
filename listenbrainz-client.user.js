@@ -65,6 +65,11 @@ class MusicMetaClient{
 let musicInfo = new MusicMetaClient();
 
 setInterval(() => {
+    if(
+        !document.querySelector('.playing-now > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)') ||
+        !document.querySelector('.playing-now > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > a:nth-child(1)')
+    )return;
+
     musicInfo.updateMeta({
         type: 'ClientUpdate',
         songTitle: document.querySelector('.playing-now > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)').innerText,
