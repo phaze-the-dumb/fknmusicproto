@@ -29,7 +29,7 @@ class MusicMetaClient{
         this.ws.onclose = () => {
             if(this.opts.debug)
                 console.log('Cannot connect to any server, is it running? Trying again in 5 seconds.');
-                
+
             this.open = false;
             setTimeout(() => this.attemptConnection(), 5000);
         }
@@ -72,7 +72,7 @@ let convertTime = ( str ) => {
         seconds += minutes * 60;
         return seconds;
     }
-    
+
     if(splitTime.length === 3){
         let seconds = parseInt(splitTime[2]);
         let minutes = parseInt(splitTime[1]);
@@ -99,17 +99,19 @@ setInterval(() => {
         songTitle: document.querySelector('.nowPlayingBarText > div:nth-child(1) > a:nth-child(1)').innerText,
         songArtist: document.querySelector('.nowPlayingBarSecondaryText > a:nth-child(1)').innerText,
         songAlbum: document.querySelector('.nowPlayingAlbum > a:nth-child(1)') ? document.querySelector('.nowPlayingAlbum > a:nth-child(1)').innerText : null,
-        duration: 
+        duration:
             document.querySelector('.nowPlayingBarCurrentTime').checkVisibility() ?
                 convertTime(document.querySelector('.nowPlayingBarCurrentTime').innerText.split(' / ')[1]) :
                 convertTime(document.querySelector('.runtime').innerText),
-        elapsed: 
+        elapsed:
             document.querySelector('.nowPlayingBarCurrentTime').checkVisibility() ?
                 convertTime(document.querySelector('.nowPlayingBarCurrentTime').innerText.split(' / ')[0]) :
                 convertTime(document.querySelector('.positionTime').innerText),
-        playing: 
-            document.querySelector('button.playPauseButton:nth-child(2) > span:nth-child(1)').className.includes('pause') &&
-            document.querySelector('button.playPauseButton:nth-child(2) > span:nth-child(1)').checkVisibility(),
+        playing:
+            (document.querySelector('button.playPauseButton:nth-child(2) > span:nth-child(1)').className.includes('pause') &&
+            document.querySelector('button.playPauseButton:nth-child(2) > span:nth-child(1)').checkVisibility()) ||
+            document.querySelector('.pause_circle_filled'),
+        art: document.querySelector('.nowPlayingPageImage').src,
         source: 'Jellyfin'
     })
 }, 1000);
