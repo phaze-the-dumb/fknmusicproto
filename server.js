@@ -146,16 +146,7 @@ class MusicMetaServer extends events.EventEmitter{
                                 reason: 'DuplicateID'
                             }));
 
-                            this.activity.forEach(a => socket.send(JSON.stringify({
-                                type: 'ClientUpdate',
-                                songTitle: a.media.songTitle,
-                                songArtist: a.media.songArtist,
-                                songAlbum: a.media.songAlbum,
-                                duration: a.media.duration,
-                                elapsed: a.media.elapsed,
-                                playing: a.media.playing,
-                                source: a.media.source
-                            })));
+                            this.activity.forEach(a => socket.send(JSON.stringify(a)));
     
                             return;
                         }
@@ -181,13 +172,7 @@ class MusicMetaServer extends events.EventEmitter{
                             this.activity.push(activity);
                         }
 
-                        activity.media.title = msg.songTitle;
-                        activity.media.artist = msg.songArtist;
-                        activity.media.album = msg.songAlbum;
-                        activity.media.duration = msg.duration;
-                        activity.media.elapsed = msg.elapsed;
-                        activity.media.playing = msg.playing;
-                        activity.media.source = msg.source;
+                        activity.media = msg;
                         this.emit('ActivityUpdated', activity);
 
                         this.secondarys.forEach(s =>
